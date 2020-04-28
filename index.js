@@ -34,8 +34,8 @@ When your math is correct, monthlyRate will equal 1073.64
 */
 numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
 denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
-MonthlyPayment = principal * (numerator / denominator)
-console.log(MonthlyPayment);
+MonthlyRate = principal * (numerator / denominator)
+console.log(MonthlyRate);
 
 
 // 🏡 Task 3: Function
@@ -43,9 +43,23 @@ console.log(MonthlyPayment);
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
+function MortCal(){
+  
+  let principal = 200000;
+  let interestRate = 0.05;
+  let years = 30;
+  let name = 'Alex Whitt';
+  
+  let MonthlyInterestRate = interestRate / 12;
+  let periods = years * 12;
+  
+  numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
+  denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
+  MonthlyRate = principal * (numerator / denominator);
+  return name + ', your monthly rate is $' + MonthlyRate;
+}
 
-
-
+console.log(MortCal());
 
 
 // 🏡 Task 4: Arguments and Parameters
@@ -54,10 +68,24 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 For example,
 mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 */
+function MortCal2(p, i, y, n,s) {
 
+  let principal = p;
+  let interestRate = i;
+  let years = y;
+  let name = n;
+  let credit = s;
 
+  let MonthlyInterestRate = interestRate / 12;
+  let periods = years * 12;
 
+  numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
+  denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
+  MonthlyRate = principal * (numerator / denominator);
+  return name + ', your monthly rate is $' + MonthlyRate;
+}
 
+console.log(MortCal2(200000, 0.05, 30, 'Alex Whitt'));
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
