@@ -43,32 +43,7 @@ console.log(MonthlyRate);
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
-/*function MortCal(){
-  
-  let principal = 200000;
-  let interestRate = 0.05;
-  let years = 30;
-  let name = 'Alex Whitt';
-  
-  let MonthlyInterestRate = interestRate / 12;
-  let periods = years * 12;
-  
-  numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
-  denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
-  MonthlyRate = principal * (numerator / denominator);
-  return name + ', your monthly rate is $' + MonthlyRate;
-}
-
-console.log(MortCal()); */
-
-
-// 🏡 Task 4: Arguments and Parameters
-/* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
-
-For example,
-mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
-*/
- /* function MortCal(p, i, y, n,s) {
+function MortCal(p, i, y, n,s) {
 
   let principal = p;
   let interestRate = i;
@@ -92,39 +67,21 @@ mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 }
 
 console.log(MortCal(200000, 0.05, 30, 'Alex Whitt', 700));
+
+
+// 🏡 Task 4: Arguments and Parameters
+/* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
+
+For example,
+mortgageCalculator(2000000, 0.05, 30); <-- should return 1,073.64
 */
+ 
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
-
-function variableInterestRate(p,i,y,n){
-  let vari = .02;
-  for (let l = 0; l < 11; l++){
-    let principal = p;
-    let interestRate = i;
-    let years = y;
-    let name = n;
-
-    interestRate = interestRate - vari;
-
-  
-    let MonthlyInterestRate = interestRate / 12;
-    let periods = years * 12;
-  
-    numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
-    denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
-    MonthlyRate = Math.round(principal * (numerator / denominator));
-
-      console.log( name + ', with an interest rate of ' + interestRate + ", your monthly rate is $" + MonthlyRate);
-      vari = vari - .005;
-    }
-}
-
-variableInterestRate(200000,.04,30,"Alex");
-
 
 
 // 🏡 Task 6: Loops
@@ -143,7 +100,39 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate(p,i,y,n,s){
+  let vari = .02;
+  for (let l = 0; l < 11; l++){
+    let principal = p;
+    let interestRate = i;
+    let years = y;
+    let name = n;
+    let credit = s;
 
+  
+
+    interestRate = interestRate - vari;
+
+  
+    let MonthlyInterestRate = interestRate / 12;
+    let periods = years * 12;
+  
+    if (credit > 740){ 
+      MonthlyInterestRate = MonthlyInterestRate - (MonthlyInterestRate * 0.5) }
+      else if (credit < 660){
+        MonthlyInterestRate = MonthlyInterestRate + (MonthlyInterestRate * 0.5)
+      }
+    numerator = MonthlyInterestRate * Math.pow(1 + MonthlyInterestRate, periods);
+    denominator = Math.pow(1 + MonthlyInterestRate, periods) - 1;
+    MonthlyRate = Math.round(principal * (numerator / denominator));
+
+      console.log( `${name}, with an interest rate of ${interestRate.toFixed(3)}, your monthly is $ ${MonthlyRate}`);
+
+      vari = vari - .005;
+    }
+}
+
+variableInterestRate(200000,.04,30,"Alex");
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -160,3 +149,4 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+
